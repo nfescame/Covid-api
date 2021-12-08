@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+
+import { AuthContext } from "./providers/index";
+
+import DataGridComponent from "./components/dataGrid";
+import CardComponet from "./components/card";
+import AppBarComponemt from "./components/navBar";
 
 function App() {
+  const dataProvider = useContext(AuthContext);
+  const { title } = dataProvider;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppBarComponemt title={title} />
+      <DataGridComponent />
+      <CardComponet />
     </div>
   );
 }
